@@ -1,0 +1,225 @@
+:root {
+  --color-background: #fbfbf8;
+  --color-surface: rgba(255, 255, 255, 0.78);
+  --color-border: rgba(0, 0, 0, 0.14);
+  --color-border-strong: rgba(0, 0, 0, 0.22);
+  --color-foreground: #101010;
+  --color-muted: #6a6a6a;
+  --header-height: 64px;
+  --content-width: min(1120px, calc(100vw - 32px));
+  --canvas-size: min(512px, calc(100vw - 32px));
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--color-background);
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0;
+  color: var(--color-foreground);
+  background:
+    radial-gradient(circle at top left, rgba(0, 0, 0, 0.04), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(0, 0, 0, 0.03), transparent 24%),
+    linear-gradient(180deg, #ffffff, var(--color-background));
+  font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(circle at center, black, transparent 80%);
+}
+
+.site-shell {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: var(--header-height) 1fr auto;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: var(--header-height);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.94);
+  backdrop-filter: blur(12px);
+  color: #ffffff;
+}
+
+.site-header__inner,
+.site-footer {
+  width: var(--content-width);
+  margin: 0 auto;
+}
+
+.site-header__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand__logo {
+  display: block;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+}
+
+.brand__name {
+  font-size: clamp(1rem, 0.95rem + 0.55vw, 1.3rem);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #ffffff;
+}
+
+.site-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 36px 16px 24px;
+}
+
+.hero {
+  width: min(100%, 760px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+.simulation-frame {
+  width: min(100%, calc(var(--canvas-size) + 28px));
+  padding: 14px;
+  border: 1px solid var(--color-border-strong);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(249, 249, 246, 0.95)),
+    var(--color-surface);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.12),
+    0 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.simulation-frame__canvas {
+  display: block;
+  width: var(--canvas-size);
+  height: auto;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  background: #ffffff;
+  image-rendering: pixelated;
+}
+
+.hero__intro {
+  max-width: 37rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-size: clamp(1.25rem, 1.1rem + 0.9vw, 1.8rem);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.hero__copy {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  line-height: 1.7;
+}
+
+.site-footer {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 18px;
+}
+
+.site-footer small {
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 720px) {
+  .site-main {
+    padding-top: 28px;
+  }
+
+  .hero {
+    gap: 18px;
+  }
+
+  .simulation-frame {
+    padding: 10px;
+  }
+
+  .hero__intro {
+    max-width: 31rem;
+  }
+
+  .brand__name {
+    letter-spacing: 0.13em;
+  }
+}
+
+@media (max-width: 420px) {
+  :root {
+    --content-width: calc(100vw - 24px);
+    --canvas-size: calc(100vw - 24px);
+  }
+
+  .site-main {
+    padding-top: 22px;
+    padding-bottom: 18px;
+  }
+
+  .brand {
+    gap: 10px;
+  }
+
+  .brand__logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .brand__name {
+    font-size: 0.94rem;
+    letter-spacing: 0.11em;
+  }
+
+  .hero__copy {
+    line-height: 1.6;
+  }
+}

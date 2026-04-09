@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bad Dev Corp | Temporary Website</title>
+    <meta
+      name="description"
+      content="Temporary landing page for Bad Dev Corp. The full website is currently under development."
+    >
+    <meta name="theme-color" content="#000000">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon-180.png">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/game-of-life.js" defer></script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header__inner">
+          <div class="brand" aria-label="Bad Dev Corp">
+            <img
+              class="brand__logo"
+              src="assets/img/bd-logo-128.png"
+              alt="Bad Dev Corp logo"
+              width="40"
+              height="40"
+            >
+            <span class="brand__name">Bad Dev Corp</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="site-main">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero__intro">
+            <h1 id="hero-title">Welcome, fellow wanderer.</h1>
+            <p class="hero__copy">
+              The website is under construction. We apologize for the inconvenience.
+              Please entertain yourself with the Game of Life we carefully crafted
+              especially for you.
+            </p>
+          </div>
+          <div class="simulation-frame">
+            <canvas
+              id="game-of-life"
+              class="simulation-frame__canvas"
+              width="512"
+              height="512"
+              aria-hidden="true"
+            ></canvas>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <small>&copy; 2026 Bad Dev Corp. All rights reserved.</small>
+      </footer>
+    </div>
+  </body>
+</html>
